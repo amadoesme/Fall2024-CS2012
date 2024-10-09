@@ -1,0 +1,97 @@
+You will have one hour to finish this checkpoint. You may use online resources to lookup Java programming language references. Do your own work.
+    There will be a chance to do a make-up checkpoint if needed, so don't panic.
+    For anyone with OSD requirements let me know and I will provide accommodations.
+
+ 
+
+Write a RectangleShape class.  A RectangleShape object represents a geometric shape with a (double w) width dimension and an (double h) height dimension.  In addition to the two private data variables, include the following public methods:
+
+
+A constructor which takes two arguments, the w and h values 
+Another constructor which takes no arguments. The no argument constructor will make a rectangle with a default size of 1.0 for both the width and height.
+Getters and Setters for each variable (double w and double h)
+The Constructor and Setter should prevent the user from entering zero or a negative value for the sizes. If incorrect values are entered the values will be assigned the default value 1.0.
+A toString() that will return a String with the w and h values in this format: 
+ RectangleShape(3.4, 2.7) 
+A int compareRectangles(RectangleShape otherRectangleShape) method that compares the area of this RectangleShape with otherRectangleShape. The method will return 1 if this rectangle is larger, if the rectangles are the same area it will return 0, and if otherRectangleShape is larger it will return -1.
+Paste your code into the text entry box as well as uploading the java file. Do not include the test file.
+
+*hint, look up how the method Double.compare(doubleValue1, doubleValue2) works.
+
+ --------------------------------------------------------------------
+
+Here is a program to test the RectangleShape class with:
+
+//RectangleShapeTest.java
+
+package checkpoint1;
+
+public class RectangleShapeTest {
+
+	public static void main(String[] args) {
+		int totalPoints = 55; //just for not crashing
+
+		RectangleShape rect1 = new RectangleShape();
+		RectangleShape rect2 = new RectangleShape(3.4, 2.7);
+		RectangleShape rect3 = new RectangleShape(0.0, -2.4);
+		RectangleShape rect4 = new RectangleShape(9.2, 1.3);
+
+		// test 1
+		if (Double.compare(rect4.getW(), 9.2) == 0) {
+			System.out.println("passed test 1");
+			totalPoints += 5;
+		}
+
+		// test 2
+		if (Double.compare(rect4.getH(), 1.3) == 0) {
+			System.out.println("passed test 2");
+			totalPoints += 5;
+		}
+
+		// test 3
+		if (rect1.toString().equals("RectangleShape(1.0, 1.0)")) {
+			System.out.println("passed test 3");
+			totalPoints += 5;
+		}
+
+		// test 4
+		if (rect2.toString().equals("RectangleShape(3.4, 2.7)")) {
+			System.out.println("passed test 4");
+			totalPoints += 5;
+		}
+
+		// test 5
+		if (rect3.toString().equals("RectangleShape(1.0, 1.0)")) {
+			System.out.println("passed test 5");
+			totalPoints += 5;
+		}
+
+		// test 6
+		if (rect1.compareRectangles(rect2) == -1) {
+			System.out.println("passed test 6");
+			totalPoints += 5;
+		}
+
+		// test 7
+		if (rect2.compareRectangles(rect1) == 1) {
+			System.out.println("passed test 7");
+			totalPoints += 5;
+		}
+
+		// test 8
+		if (rect1.compareRectangles(rect3) == 0) {
+			System.out.println("passed test 8");
+			totalPoints += 5;
+		}
+
+		// test 9
+		rect4.setW(3.4);
+		rect4.setH(2.7);
+		if (rect2.compareRectangles(rect4) == 0) {
+			System.out.println("passed test 9");
+			totalPoints += 5;
+		}
+
+		System.out.println("Score is " + totalPoints + " out of possible 100");
+	}
+}
